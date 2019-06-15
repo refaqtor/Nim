@@ -2168,7 +2168,10 @@ proc createDir*(dir: string) {.rtl, extern: "nos$1",
 
 proc copyDir*(source, dest: string) {.rtl, extern: "nos$1",
   tags: [WriteIOEffect, ReadIOEffect], benign, noNimScript.} =
-  ## Copies a directory from `source` to `dest`.
+  ## Copies the contents of a directory from `source` to `dest`, 
+  ## creating `dest`, if necessary, and overwriting existing files.
+  ## Be aware that resulting `dest` directory will hold the combined files
+  ## from the `source` directory plus any files previously existing in `dest`.
   ##
   ## If this fails, `OSError` is raised.
   ##
